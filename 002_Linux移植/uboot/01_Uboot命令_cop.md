@@ -2,14 +2,28 @@
 
 当编译得到Uboot.bin, zImage, 及Rootfs后，在Uboot使用如下命令快速移植至板子
 
+Cop:
+
 ```textile
 setenv ipaddr 192.168.1.50
 setenv ethaddr b8:ae:1d:01:00:00
 setenv gatewayip 192.168.1.1
 setenv netmask 255.255.255.0
 setenv serverip 192.168.1.241
-setenv bootcmd 'tftp 80800000 zImage; tftp 83000000 imx6ull-14x14-emmc-4.3-800x480-c.dtb; bootz 80800000 - 83000000'
+setenv bootcmd 'tftp 80800000 zImage; tftp 83000000 imx6ull-alient-emmc.dtb; bootz 80800000 - 83000000'
 setenv bootargs 'console=ttymxc0,115200 root=/dev/nfs nfsroot=192.168.1.241:/home/tf/linux/nfs/buildroot,vers=3,proto=tcp rw ip=192.168.1.50:192.168.1.241:192.168.1.1:255.255.255.0::eth0:off'
+```
+
+Home:
+
+```txt
+setenv ipaddr 192.168.137.50
+setenv ethaddr b8:ae:1d:01:00:00
+setenv gatewayip 192.168.137.1
+setenv netmask 255.255.255.0
+setenv serverip 192.168.137.230
+setenv bootcmd 'tftp 80800000 zImage; tftp 83000000 imx6ull-14x14-emmc-4.3-800x480-c.dtb; bootz 80800000 - 83000000'
+setenv bootargs 'console=ttymxc0,115200 root=/dev/nfs nfsroot=192.168.137.230:/home/tengfei/linux/nfs/rootfs,proto=tcp rw ip=192.168.137.50:192.168.137.230:192.168.137.1:255.255.255.0::eth0:off'
 ```
 
 # 2 Uboot编译
